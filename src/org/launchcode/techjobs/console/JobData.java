@@ -75,9 +75,9 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
-//aValue.toLowerCase was added. search by location didnt work being case sensitive.
-            if (aValue.toLowerCase().contains(value)) {
+            String aValue = row.get(column).toLowerCase();
+
+            if (aValue.contains(value)) {
                 jobs.add(row);
             }
         }
@@ -90,9 +90,11 @@ public class JobData {
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for(HashMap<String, String> row : allJobs) {
+
             for(Map.Entry<String, String> values : row.entrySet()){
                 String search = values.getValue().toLowerCase();
-                if(search.contains(value.toLowerCase())) {
+
+                if(search.contains(value)) {
                     jobs.add(row);
                     break;
                 }
